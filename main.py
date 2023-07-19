@@ -15,11 +15,12 @@ async def get_info():
     CONFIG = Json.load_nowait("config.json")    
     
     async with aopen("api", mode="r+", encoding="utf-8") as API:
+        
         async for rq in API:
             
             url = f"https://opendata.cwb.gov.tw/api/v1/rest/datastore/{rq[:-1]}?Authorization=" + CONFIG["TOKEN"]
             res = get(url).json()
-            time = datetime.now().strftime("%Y%m%d")
+            time = datetime.now().strftime("%Y%m%d %H-%M-%S")
             f_name = f"results/{time}_{rq[:-1]}.json"
             async with aopen(f_name, mode="w") as _:
 
