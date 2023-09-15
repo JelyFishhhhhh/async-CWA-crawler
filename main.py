@@ -18,7 +18,7 @@ async def get_info():
         
         async for rq in API:
             
-            url = f"https://opendata.cwb.gov.tw/api/v1/rest/datastore/{rq[:-1]}?Authorization=" + CONFIG["TOKEN"]
+            url = f"https://opendata.cwa.gov.tw/api/v1/rest/datastore/{rq[:-1]}?Authorization=" + CONFIG["TOKEN"]
             res = get(url).json()
             time = datetime.now().strftime("%Y%m%d %H-%M-%S")
             f_name = f"results/{time}_{rq[:-1]}.json"
